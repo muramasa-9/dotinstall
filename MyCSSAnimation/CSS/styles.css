@@ -1,0 +1,35 @@
+body {
+  padding: 64px;
+}
+
+
+.masage {
+  width: 300px;
+  padding: 8px 16px;
+  background: #2c2c2c;
+  color: #ddd;
+  border-radius: 4px;
+  box-shadow: 10px 20px 4px rgba(0, 0, 0, .2);
+
+  position: fixed;
+  right: 32px;
+  bottom: 16px;
+
+  animation: popup 3s forwards; /* 終わったら戻らない */
+  /* animation-duration:  */
+}
+
+@keyframes popup {
+  0% {transform: translatey(20px);  /* 下スタート */
+    opacity: 0; /* 透明スタート */
+    animation-timing-function: ease-out;} /* 最初が早い */
+
+  20%, 80% {transform: none; /* まとめて表示できる */
+    opacity: 1;} /* 100%表示 */
+  /* 80% {transform: none;
+    opacity: 1;}  */
+
+  100% {transform: translatey(20px);  /* 下に戻る */
+    opacity: 0; /* 透明終わり */
+    pointer-events: none;}
+/* opacityは0~1で透明度を表示 */

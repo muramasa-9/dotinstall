@@ -1,0 +1,33 @@
+/* 格子状の複雑なレイアウトを使いこなす */
+
+
+
+/* グリッドしたい要素は親要素で囲んで作成 */
+.container {
+  display: grid; /* 親要素に指定 */
+
+/* ２列３行のグリッドを作成 ※左上から並ぶ */
+  grid-template-columns: 100px 100px; /* 2列 */
+  grid-template-rows: 100px 100px 100px; /* 3行 */
+
+/* 【1fr】両端を固定幅、真ん中を残り幅 */
+  grid-template-columns: 100px 1fr 100px; /* 3列 */
+  grid-template-rows: 100px 100px; /* 2行 */
+
+/* 2:1の割合で振り分ける */
+  grid-template-columns: 100px 2fr 1fr; /* 3列 */
+  grid-template-rows: 100px 100px; /* 2行 */
+}
+
+
+
+
+/* 【gap】で余白をつける */
+.container {
+  display: grid; /* 親要素に指定 */
+  grid-template-columns: 100px 100px 100px; /* 3列 */
+  grid-template-rows: 100px 100px; /* 2行 */
+
+  gap: 10px; /* 縦横の余白 */
+  gap: 10px 40px; /* 縦と横それぞれの余白 */
+}

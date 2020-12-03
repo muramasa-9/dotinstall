@@ -1,0 +1,210 @@
+/* アニメーションは【変化前→補完→変化後】で書く */
+
+
+
+/* 【transition】補完部分に追記 */
+.box {
+  transition-property: border-radius; /* 補完内容 */
+  transition-duration: 1s; /* １秒かけて変化 */
+  transform-origin: top left; /* 起点を左上に変更 通常は中心*/
+}
+
+
+
+
+/* 【transform】①移動 ②回転 ③リサイズ */
+.box {
+  /* 移動 */
+  transform: translatex(100px); /* ｘ軸方向に100px移動 */
+  transform: translatey(150px); /* ｙ軸方向に150px移動 */
+  transform: translate(100px, 150px); /* ｘｙ軸方向に一括指定 */
+
+  /* 回転 */
+  transform: rotate(30deg); /* 30度回転 */ 
+
+  /* リサイズ */
+  transform: scalex(2); /* ｘ軸方向に2倍 */
+  transform: scaley(0.5); /* ｙ軸方向に0.5倍 */
+  transform: scale(2, 0.5); /* ｘｙ軸方向に一括指定 0は省略できる*/
+
+  /* 同士指定は順番注意！ */
+  transform: translatex(100px) rotate(30deg); /* 横移動して回転 */
+  transform: rotate(30deg) translatex(100px); /* 回転して斜め移動 */
+}
+
+
+
+
+/* 【transform-origen】で動きの起点を変更 補完部分に追記*/
+.box {
+  transform-origin: top left;
+  /* 起点を左上に変更 通常は中心 translateは影響なし*/
+}
+
+
+
+
+/* 【transition-property】は複数選択も可能 */
+.box {
+  transition-property: transform, background; /* 背景色もゆっくり変化 */
+  transition-property: all; /* すべて選択になるので好ましくない */
+
+  transition-duration: 1s; /* １秒かけて変化 */
+
+  /* chromeのリロードでの一瞬変化するバグは、htmlのbodyに<script>半角スペース</script>を追記で解消 */
+}
+
+
+
+/* 【transition】の時間の種類 */
+.box {
+  transition-property: border-radius; /* 補完内容 */
+
+  transition-duration: .3s; /* 0.3秒かけて変化 ※基準の数値 */
+  transition-delay: 1s; /* １秒遅れて開始 */
+}
+
+
+
+
+/* 【transition-timing-function】動きの緩急 */
+.box {
+  transition-timing-function: ease; /* 既定値 ゆっくり速度が上がりゆっくり速度が落ちる */
+  transition-timing-function: ease-out; /* 最初が早い 小さいUI部品によく使う */
+  transition-timing-function: ease-in-out; /* 最初がゆっくり 大きいUI部品によく使う */
+  transition-timing-function: linear; /* 等速 ローディングなど回転部品 */
+}
+
+/* デベロッパーツールで動きを自作 */
+/* 検証のstyleから動きのプロバティをチェックして図で動きを変更可能
+数値をstylesheetにコピべ */
+
+
+
+
+/* 【transiton】は一括指定できる */
+.box {
+  transition: transform 3s ease-out 1s, backgroun .5s;
+   /* 順不同、省略可能でOK */
+   /* 時間２つあると 先duration 後delay になる */
+   /* 複数のプロパティ指定は , で区切る */
+}
+
+
+
+
+/* 【animation】はいろいろな変化を指定できる */
+/* 繰り返しも可能 */
+.box {
+  animation-name: move; /* 変化する名前を指定 */
+  animation-duration: 2s; /* アニメーションにかかる時間 */
+  animation-delay: 1s; /* アニメーションが始まるまでの時間 */
+  animation-fill-mode: forwards; /* アニメーション後はそのままの位置 */
+
+  animation-iteration-count: 2; /* 繰り返しの回数 */
+  animation-iteration-count: infinite; /* 無限に繰り返し */
+
+  animation-direction: alternate; /* アニメーション後に逆再生で戻る */
+  animation-direction: reverse; /* 逆向きにアニメーション */
+  animation-direction: alternate-reverse; /* 逆向きにアニメーション後に逆再生で戻る */
+  
+  /* 動きの緩急 */
+  animation-timing-function: ease; /* ゆっくり始まってゆっくり終わる */
+  animation-timing-function: ease-out; /* 最初が早い */
+  animation-timing-function: ease-in; /* ゆっくり始まり最後まで加速する */
+  animation-timing-function: ease-in-out; /* ゆっくり始まり、加速して、ゆっくり終わる */
+  animation-timing-function: linear; /* 一定の速度で動く */
+}
+
+/* ”@keyframes 名前"を使って指定 */
+@keyframes move { /* 名前の設定 英数字、ハイフン、アンダーバー使用 */
+  0% { transform: none; /* スタートは変化なし ※書かなくてもよい */
+    animation-timing-function: linear; } /* 一定速度 */
+  50% { transform: translatex(200px) rotate(360deg); } /* 200px移動して360度回転 */
+  100% { transform: translatex(300px) rotate(360deg); } /* 360度回転したまま300pxまで移動 */
+}
+
+
+
+
+/* 【animation】プロパティの一括指定 */
+.box {
+  animation: move 2s infinite 1s;
+/* 順不同、省略可能でOK */
+/* 時間２つあると 先duration 後delay になる */
+}
+
+
+
+
+/* ボタンのサンプルを作る */
+.btn {
+  padding: 16px 32px; /* ボタンのサイズ */
+  background: hsl(200, 100%, 40%); /* 背景色 */
+  color: #fff; /* 文字の色 */
+  border-radius: 4px; /* ボタンの角を丸く */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .1); /* うっすら影 */
+  cursor: pointer; /* ポンタを乗せると変わる */
+  transition: background 1s; /* 変化にかかる時間指定 */
+}
+
+.btn:hover {
+  background: hsl(200, 100%, 60%); /* 変化後の色 */
+}
+
+
+
+
+/* 回転ボタンを作る */
+.loading {
+  width: 40px;
+  height: 40px;
+  border: 8px solid #ccc;
+  border-right-color: transparent; /* 右だけ非表示 */
+  border-radius: 50%; /* 丸くする */
+
+  animation: spin 1s infinite linear; /* 等速で回転 */
+}
+
+@keyframes spin {
+  0% {transform: none;}
+  100% {transform: rotate(360deg);}
+/* 0%-100%はfrom-toでも書ける */
+  from {transform: none;}
+  to {transform: rotate(360deg);}
+}
+
+
+
+
+/* ポップアップバナーを作る */
+.masage {
+  width: 300px;
+  padding: 8px 16px;
+  background: #2c2c2c;
+  color: #ddd;
+  border-radius: 4px;
+  box-shadow: 10px 20px 4px rgba(0, 0, 0, .2);
+
+  position: fixed; /* 左上基準で場所を指定 */
+  right: 32px; /* 右から32px離れる */
+  bottom: 16px; /* 下から16px離れる */
+
+  animation: popup 3s forwards; /* 終わったら戻らない */
+}
+
+@keyframes popup {
+  0% {transform: translatey(20px);  /* 下スタート */
+    opacity: 0; /* 透明スタート */
+    animation-timing-function: ease-out;} /* 最初が早い */
+
+  20%, 80% {transform: none; /* まとめて表示できる */
+    opacity: 1;} /* 100%表示 */
+  /* 80% {transform: none;
+    opacity: 1;}  */
+
+  100% {transform: translatey(20px);  /* 下に戻る */
+    opacity: 0; /* 透明終わり */
+    pointer-events: none;} /* 非表示の時はポインターに反応しない */
+/* opacityは0~1で透明度を表示 */
+
