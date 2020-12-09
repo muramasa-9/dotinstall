@@ -1,0 +1,23 @@
+:root {
+  --my-hue: 200;
+}
+
+
+body {
+  margin: 0;
+  background: hsl(var(--my-hue), 40%, 95%);
+}
+
+
+h1, p {
+  color: hsl(var(--my-hue), 35%, 55%);
+}
+
+.btn {
+  color: #fff;
+  width: 100px;
+  padding: 8px;
+  border-radius: 4px;
+  text-align: center;
+  background: hsl(calc(var(--my-hue) + 60), 50%, 50%);
+}
