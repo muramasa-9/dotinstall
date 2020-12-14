@@ -61,3 +61,48 @@ header img {
 .features section{
   padding-bottom: 64px;
 }
+
+.members {
+  background: #f2f2f3; 
+}
+
+.members > h1 {
+  text-align: center;
+  padding: 64px 0;
+  font-weight: normal;
+}
+
+.members ul {
+  list-style: none;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.members img {
+  width: 160px;
+  border-radius: 50%;
+}
+
+.members li {
+  padding-bottom: 64px;
+}
+
+.members h2 {
+  font-size: 20px;
+}
+
+.call-to-action {
+  background: #f59a00;
+  color: #fff;
+  text-align: center;
+  padding: 64px 0;
+}
+
+.call-to-action h1 {
+  font-weight: normal;
+}
+
+.call-to-action .btn {
+  margin: 0 auto;
+}
