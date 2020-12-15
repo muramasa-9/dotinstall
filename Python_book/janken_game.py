@@ -4,5 +4,5 @@ for k in range(10):
   print(str(v) + "+" + str(i) + "=" + str(v + i))
   v = v + i
 
-print("------")
+print("-------")
 print("合計" + str(v))
