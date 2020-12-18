@@ -20,7 +20,7 @@
   transform: translate(100px, 150px); /* ｘｙ軸方向に一括指定 */
 
   /* 回転 */
-  transform: rotate(30deg); /* 30度回転 */ 
+  transform: rotate(30deg); /* 30度回転 */
 
   /* リサイズ */
   transform: scalex(2); /* ｘ軸方向に2倍 */
@@ -107,7 +107,7 @@
   animation-direction: alternate; /* アニメーション後に逆再生で戻る */
   animation-direction: reverse; /* 逆向きにアニメーション */
   animation-direction: alternate-reverse; /* 逆向きにアニメーション後に逆再生で戻る */
-  
+
   /* 動きの緩急 */
   animation-timing-function: ease; /* ゆっくり始まってゆっくり終わる */
   animation-timing-function: ease-out; /* 最初が早い */

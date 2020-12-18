@@ -1,5 +1,7 @@
 {
 "python.pythonPath": "/Users/muramasa9/.pyenv/shims/python",
 "jupyter.jupyterServerType": "local",
-"git.ignoreLimitWarning": true
+"git.ignoreLimitWarning": true,
+"editor.formatOnSave": true,
+"editor.defaultFormatter": "esbenp.prettier-vscode"
 }
