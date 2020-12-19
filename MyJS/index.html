@@ -20,10 +20,14 @@
         line-height: 100px; /* boxのheightと合わせて中央にする */
       }
 
-      .circle {
+      .win {
         background: pink;
         border-radius: 50%;
         transform: rotate(360deg);
+      }
+
+      .lose {
+        transform: scale(0.9);
       }
     </style>
   </head>
@@ -31,13 +35,22 @@
     <script>
       "use scrict";
 
-      for (let i = 0; i < 100; i++) {
+      const num = 5;
+      const winner = Math.floor(Math.random() * num); // 0-4
+
+      for (let i = 0; i < num; i++) {
         const div = document.createElement("div");
         div.classList.add("box");
-        div.textContent = i;
 
         div.addEventListener("click", () => {
-          div.classList.toggle("circle");
+          if (i === winner) {
+            div.textContent = 'Win!';
+            div.classList.add('win');
+          }else {
+            div.textContent = 'Lose!';
+            div.classList.add('lose');
+          }
+
         });
 
         document.body.appendChild(div);
