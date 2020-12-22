@@ -2,10 +2,53 @@
 
 
 
+# 【リスト】
+
+# 足し算ができる str()とint()は混合不可
+a = [0, 1, 2, 3]
+b = [4]
+c = a + b # c = [0,1,2,3,4]
+
+# 末尾に追加 【リスト名.append(追加要素)】
+a.append(4)
+
+# 要素を削除 【del(リスト名[削除要素])】
+del(a[2]) # リストの2番目を削除
+
+
+
+
+# クラスの設定
+class Person: # クラス名
+  def __init__(self, name, nationality, age): # def __init__(self):で初期化
+    self.name = name
+    self.nationality = nationality
+    self.age = age
+
+  def __call__(self): # def __call__(self):は特殊な呼び出し方法
+    print('ここはcall関数です。')
+
+  def say_hello(self, name):
+    print('こんにちは、{}さん。私は{}です。'.format(name, self.name))
+
+imanishi = Person('今西', '日本', 40 )
+imanishi() # def __call__(self):の呼び出し方
+
+
+class Saiyan(Person): # 親クラスを承継した子クラス
+  def __init__(self, name, nationality, age, strength):
+    super().__init__(name, nationality, age) # 親クラスの造成呼び出し
+    self.strength = strength # 小クラスで属性追加
+
+goku = Saiyan('悟空', '宇宙', 15, 100000)
+goku.say_hello('今西')
+
+
+
+
 # 【スライス】要素を変更できない
 
 from typing import Iterator
-
 
 scores = [40, 50, 70, 90, 60]
 print(scores[1:4]) # １番目から４番目の前まで
@@ -110,7 +153,7 @@ print(list(filter(is_even, range(10)))) # 0~9までの幅で偶数を表示
 # リストに変換しないと表示されない
 
 # lambdaだと１行で表示できる
-print(list(filter(lambda n: n % 2 == 0, range(10)))) 
+print(list(filter(lambda n: n % 2 == 0, range(10))))
 
 
 

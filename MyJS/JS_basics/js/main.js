@@ -1,7 +1,30 @@
 'use strict';
 
-console.log(typeof 'hello');
-console.log(typeof 5);
-console.log(typeof true);
-console.log(typeof undefined);
-console.log(typeof null);
+const signal = 'Green';
+
+// if (signal === 'red') {
+//   console.log('Stop!');
+// } else if (signal === 'yellow') {
+//   console.log('Caution!');
+// } else if (signal === 'Blue') {
+//   console.log ('Go!');
+// }
+
+switch (signal) {
+  case 'red':
+    console.log('Stop!');
+    break;
+
+  case 'yellow':
+    console.log('Caution!');
+    break;
+
+  case 'blue':
+  case 'green':
+    console.log('Go!');
+    break;
+
+  default:
+    console.log('Wrong signal!');
+    break;
+}
