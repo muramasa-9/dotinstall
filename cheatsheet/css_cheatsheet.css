@@ -1,5 +1,5 @@
+/* animation---------------------------------------------------- */
 /* アニメーションは【変化前→補完→変化後】で書く */
-
 
 
 /* 【transition】補完部分に追記 */
@@ -207,4 +207,107 @@
     opacity: 0; /* 透明終わり */
     pointer-events: none;} /* 非表示の時はポインターに反応しない */
 /* opacityは0~1で透明度を表示 */
+
+
+
+
+
+/* responsive------------------------------------------------------------- */
+/* スマホサイトの表示 */
+
+
+/* まずは【 html head 】のメタタグに記載して事前準備 */
+/* <meta name="viewport" content="width=device-width, initial-scale=1"> */
+/* content="width=device-width はスマホの幅に合わせる指定 */
+/* initial-scale=1 は最初のズームを等倍に指定 */
+
+
+
+
+/* 【メディアクエリ】を使ってスマホ幅に合わせた表示 */
+@media (min-width: 600px) and (max-width: 800px) {
+  /* ()の前後は半角スペース */
+  /* 幅600px-800pxの時の変化を記入 */
+  body {
+    background: skyblue;
+  }
+｝
+
+
+@media (min-width: 0px) and (max-width: 599px) {} /* small screen */
+@media (min-width: 600px) and (max-width: 799px) {} /* mideum screen */
+@media (min-width: 800px) {} /* large screen */
+
+/* 同じ内容 ※後から書いたものが有効になる特性を活かす */
+/* まずは共通cssを記入 */
+/* small screen */
+@media (min-width: 600px) {} /* mideum screen */
+@media (min-width: 800px) {} /* large screen */
+
+
+
+
+
+/* gridlayout------------------------------------------------ */
+/* 格子状の複雑なレイアウトを使いこなす */
+
+
+/* グリッドしたい要素は親要素で囲んで作成 */
+.container {
+  display: grid; /* 親要素に指定 */
+
+/* ２列３行のグリッドを作成 ※左上から並ぶ */
+  grid-template-columns: 100px 100px; /* 2列 */
+  grid-template-rows: 100px 100px 100px; /* 3行 */
+
+/* 【1fr】両端を固定幅、真ん中を残り幅 */
+  grid-template-columns: 100px 1fr 100px; /* 3列 */
+  grid-template-rows: 100px 100px; /* 2行 */
+
+/* 2:1の割合で振り分ける */
+  grid-template-columns: 100px 2fr 1fr; /* 3列 */
+  grid-template-rows: 100px 100px; /* 2行 */
+}
+
+
+
+
+/* 【gap】で余白をつける */
+.container {
+  display: grid; /* 親要素に指定 */
+  grid-template-columns: 100px 100px 100px; /* 3列 */
+  grid-template-rows: 100px 100px; /* 2行 */
+
+  gap: 10px; /* 縦横の余白 */
+  gap: 10px 40px; /* 縦と横それぞれの余白 */
+}
+
+
+
+
+
+/* variable------------------------------------------------------ */
+/* 変数を使って便利に編集 */
+
+
+/* 注意点 */
+/* 大文字と小文字は別認識なので注意 */
+/* 値に利用できるがプロパティ名には使えない */
+/* 【var(宣言名)px】など後から追加はできない */
+
+
+/* 変数の宣言 */
+h1 {
+  --my-color: blue; /* 【--名前】で変数を指定 */
+  color: var(--my-color);  /* 【var(宣言名)】で変数を使う */
+  border-bottom: 3px solid var(--My-color,orange); /* 指定がない時はオレンジ */
+}
+
+
+
+
+/* 親要素に指定すると子要素に継承する */
+body {
+  --my-color: orange;  /* 【h1】【p】などに継承 */
+}
 
