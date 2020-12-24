@@ -289,3 +289,24 @@ const sum = (a, b, c) => { // function不要、=> 以降に処理を書く
 const sum = (a, b, c) => a + b + c; // returnで返すだけ
 
 const double = a => a * 2; // 引数が一つの時は（）省略可
+
+
+
+
+// スコープ 有効範囲
+const x = 2; // x は全体で有効
+
+function f() {
+  const x = 1; // x は関数内だけ有効
+  console.log(x);
+}
+
+f(); // 1
+console.log(x); // 2
+
+// html 内で同じ内容を書くとエラー
+// {} で囲って有効範囲を指定
+// html 内の順番通りに表示（リンクurl、直書きなど）
+
+
+
