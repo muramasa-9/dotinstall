@@ -1,4 +1,7 @@
 'use strict';
 
-const x = 100;
-console.log(x);
+
+{
+  const scores = [80, 90,40];
+  console.log(scores);
+}
