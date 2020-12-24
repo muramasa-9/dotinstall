@@ -1,30 +1,10 @@
 'use strict';
 
-const signal = 'Green';
 
-// if (signal === 'red') {
-//   console.log('Stop!');
-// } else if (signal === 'yellow') {
-//   console.log('Caution!');
-// } else if (signal === 'Blue') {
-//   console.log ('Go!');
-// }
+// const total = sum(1,2,3) + sum(4,5,6); // 値＋値の式になる
+// console.log(total);
 
-switch (signal) {
-  case 'red':
-    console.log('Stop!');
-    break;
+// const sum = (a, b, c) => a + b + c; // returnで返すだけ
 
-  case 'yellow':
-    console.log('Caution!');
-    break;
-
-  case 'blue':
-  case 'green':
-    console.log('Go!');
-    break;
-
-  default:
-    console.log('Wrong signal!');
-    break;
-}
+const double = a => a * 2; // 引数が一つの時は（）省略可
+console.log(double(12));

@@ -42,7 +42,7 @@ document.body.appendChild(div);
 
 
 
-// 【for】で繰り返し
+// 【for】文①で繰り返し
 for (let i = 0; i < 10; i++) { // iは0スタート、10までiに1ずつ足していく
   const div = document.createElement("div");
   div.classList.add("box");
@@ -208,3 +208,84 @@ switch (signal) { // switch (共通名) => caseで条件分岐 breakで閉める
 
 
 
+// 【for】文②
+for (let i = 1; i <= 10; i++) { // let で値を再代入
+  if (i === 4) {
+    continue; // 条件を満たすとスキップ
+  }
+
+  if (i === 8) {
+    break; // 条件を満たすと終了
+  }
+
+  console.log('hello'); // hello 10回
+  console.log('hello' + i); // hello1,hello2,,,,,
+  // バッククオートで囲み${}で文字列に計算式などを埋め込む
+  console.log(`hello ${i}`);
+}
+
+
+
+
+// while文
+let hp = 100;
+while (hp > 0) {
+  console.log(`${hp} HP left!`);
+  hp -= 15; // 無限ループに注意
+}
+
+ // do - while文
+let hp = -50;
+do {
+  console.log(`${hp} HP left!`);
+  hp -= 15;
+} while (hp > 0) // 条件の評価は処理の後なので必ず一度はhpを表
+
+
+
+
+// 関数で処理をまとめる
+function showad(message = 'ad') { // function 関数名(仮引数) で指定
+  // showad(引数名 = '指定名')の引数の記載がないと'ad'と表示する
+  console.log('----------------');
+  console.log(`-------${message}---------`); // バッククオーツと＄｛｝で引数引用
+  console.log('----------------');
+}
+
+showad('header ad'); // 関数の呼び出し(実引数) 【;】を忘れないよう注意
+console.log('Tom is great!');
+console.log('Bob is great!');
+showad('ad');
+console.log('Steve is great!');
+console.log('Richard is great!');
+showad('footer ad');
+
+
+
+
+ // 【return】で値をかえす
+ function sum(a, b, c) { // 関数を指定
+  return a + b + c; // 関数の値でかえす
+  console.log(a + b + c); // returnの後の処理は実行されない
+}
+
+// 関数式の書き方
+// const 関数名 = function(仮引数) {処理};
+const sum = function(a, b, c) { // 関数を指定
+  return a + b + c; // 関数の値でかえす
+};
+
+const total = sum(1,2,3) + sum(4,5,6); // 値＋値の式になる
+console.log(total);
+
+
+
+
+// アロー関数
+const sum = (a, b, c) => { // function不要、=> 以降に処理を書く
+  return a + b + c;
+};
+
+const sum = (a, b, c) => a + b + c; // returnで返すだけ
+
+const double = a => a * 2; // 引数が一つの時は（）省略可

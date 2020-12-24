@@ -46,6 +46,26 @@ goku.say_hello('今西')
 
 
 
+# 例外処理
+def menseki(base, height):
+  return base*height
+base = 10
+height = '高さ'
+
+try: # 計算エラーが出そうな要素をtryに入れる
+  result = menseki(base, height)
+  print('計算結果：{}' .format(result))
+
+except Exception as e: # エラーすべて対応の書き方
+  print('計算できません！') #エラーの時の処理
+
+finally:
+  print('必ず実行される処理があれば記入')
+
+
+
+
+
 # 【スライス】要素を変更できない
 
 from typing import Iterator
@@ -86,14 +106,17 @@ print(b - c) # ｂの要素からｃの要素を引いた残り
 
 
 
-# 辞書型 キーと値で管理
+# 【辞書型】 キーと値で管理
+# キーを使って値を取り出す
 sales = {'tomonari': 200, 'aiko': 400}
 
 sales['tomonari'] = 300 # tomonariの値を300に変更
 sales['koga'] = 500 # kogaの値500を追加
 del(sales['aiko']) # aikoの値を削除
-print(sales['tomonari']) # tomonariの値を呼び台表示
+print(sales['tomonari']) # tomonariの値を呼びだし表示
+print(sales.keys()) # 辞書名.keys() でキーの一覧を表示
 
+print('tomonari' in sales) # KEY in DICT でキーの有無を確認できる
 
 # items でキーと値を取り出す
 sales = {'tomonari': 200, 'aiko': 400}
@@ -180,3 +203,30 @@ print({i * 3 for i in range(10) if i % 2 == 0}) # {}で囲む
 
 
 
+# データの集計
+# データの指定 """や'''で囲む
+s = """
+サンマ, マグロ, サンマ, サンマ, カツオ, フグ, サンマ, マグロ, サンマ, フグ, サンマ, マグロ, サンマ, カツオ, サンマ, マグロ, サンマ, ニシン, カツオ, イワシ, サンマ, サンマ, サンマ, マグロ, ニシン, サンマ, フグ, サンマ, カツオ
+"""
+s = s.strip() # データの空白をなくす
+
+s_list = s.split(",") # , でデータを区切る
+
+result = {} # 空の辞書型の変数を作る
+for name in s_list: # 繰り返すたびにリストの要素をnameに代入
+  name = name.strip() # 空白をなくす
+
+  # nameの値（キー）がresultに存在するか確認
+  if not name in result: # [KEY in DICT] と [not] で調べる
+    result[name] = 0 # name をキーとして追加し、値を０とする
+
+  # 辞書型の name のキーの値を１追加
+  result[name] += 1
+
+# 結果の表示
+for name, v in result.items(): # items でキーと値を取り出す
+  print(name + " = " + str(v))
+
+
+
+  
