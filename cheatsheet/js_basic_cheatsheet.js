@@ -318,7 +318,32 @@ console.log(x); // 2
 
 
 // 複数の値を配列
-const scores = [80, 90,60]; // 同じ定数の値は[,]で記載
+const scores = [80, 90, 60]; // 同じ定数の値は[,]で記載
+
+console.log(scores[2]); // 個別の要素を表示
+
+scores[2] = 44; // constの定数でも要素の代入はOK
+scores = 13; // これは不可
+
+console.log(scores.length); // 要素の数を表示
 
 
+// 各要素の表示
+console.log(`Score : ${scores[0]}`);
+console.log(`Score : ${scores[1]}`);
+console.log(`Score : ${scores[2]}`);
 
+
+// for文で繰り返しを使って表示
+for (let i = 0; i < scores.length; i++) { // scores.lengthで要素の数より小さい
+  console.log(`Score ${i} : ${scores[i]}`); // S{} でインデントも表示
+}
+
+
+// 配列した要素の変更
+scores.unshift(55, 60); // unshift() 先頭に要素を追加
+scores.push(55, 60); // push() 末尾に要素を追加
+scores.shift(); // shift() 先頭の要素を削除 ()内は記載なし
+scores.pop(); // pop() 末尾の要素を削除 ()内は記載なし
+// 途中の要素の削除、追加
+scores.splice(1,1,40,50); // splice(変化開始の位置, 削除数, 追加要素, ・・・・)
