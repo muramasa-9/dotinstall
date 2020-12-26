@@ -16,6 +16,43 @@ a.append(4)
 del(a[2]) # リストの2番目を削除
 
 
+# データの集計
+# データの指定 """や'''で囲む
+s = """
+サンマ, マグロ, サンマ, サンマ, カツオ, フグ, サンマ, マグロ, サンマ, フグ, サンマ, マグロ, サンマ, カツオ, サンマ, マグロ, サンマ, ニシン, カツオ, イワシ, サンマ, サンマ, サンマ, マグロ, ニシン, サンマ, フグ, サンマ, カツオ
+"""
+s = s.strip() # データの空白をなくす
+
+s_list = s.split(",") # , でデータを区切る
+
+result = {} # 空の辞書型の変数を作る
+for name in s_list: # 繰り返すたびにリストの要素をnameに代入
+  name = name.strip() # 空白をなくす
+
+  # nameの値（キー）がresultに存在するか確認
+  if not name in result: # [KEY in DICT] と [not] で調べる
+    result[name] = 0 # name をキーとして追加し、値を０とする
+
+  # 辞書型の name のキーの値を１追加
+  result[name] += 1
+
+# 結果の表示
+for name, v in result.items(): # items でキーと値を取り出す
+  print(name + " = " + str(v))
+
+
+
+# リストの要素の並び替え
+a = [3, 7, 2, 9, 6]
+sorted(a) # 小さい順（昇順）に並び替え
+a.sort() # 小さい順（昇順）に並び替え
+sorted(a, reverse = True) # 大きい順（降順）に並び替え
+
+a_list = {"Orange": 300, "Banana": 200, "Apple": 500}
+sorted(a_list) # 文字はアルファベット順で並び替え
+# ['apple', 'Banana', 'Orange']
+
+
 
 
 # クラスの設定
@@ -203,30 +240,7 @@ print({i * 3 for i in range(10) if i % 2 == 0}) # {}で囲む
 
 
 
-# データの集計
-# データの指定 """や'''で囲む
-s = """
-サンマ, マグロ, サンマ, サンマ, カツオ, フグ, サンマ, マグロ, サンマ, フグ, サンマ, マグロ, サンマ, カツオ, サンマ, マグロ, サンマ, ニシン, カツオ, イワシ, サンマ, サンマ, サンマ, マグロ, ニシン, サンマ, フグ, サンマ, カツオ
-"""
-s = s.strip() # データの空白をなくす
-
-s_list = s.split(",") # , でデータを区切る
-
-result = {} # 空の辞書型の変数を作る
-for name in s_list: # 繰り返すたびにリストの要素をnameに代入
-  name = name.strip() # 空白をなくす
-
-  # nameの値（キー）がresultに存在するか確認
-  if not name in result: # [KEY in DICT] と [not] で調べる
-    result[name] = 0 # name をキーとして追加し、値を０とする
-
-  # 辞書型の name のキーの値を１追加
-  result[name] += 1
-
-# 結果の表示
-for name, v in result.items(): # items でキーと値を取り出す
-  print(name + " = " + str(v))
 
 
 
-  
+
