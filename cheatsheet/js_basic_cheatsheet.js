@@ -340,6 +340,14 @@ for (let i = 0; i < scores.length; i++) { // scores.lengthで要素の数より�
 }
 
 
+// forEach()で繰り返しをすっきり書く
+const scores = [80, 90, 40, 70];
+// forEach(要素, インデント)を順番に取り出す
+scores.forEach((score, index) => {
+    console.log(`Score ${index}: ${score}`)
+});
+
+
 // 配列した要素の変更
 scores.unshift(55, 60); // unshift() 先頭に要素を追加
 scores.push(55, 60); // push() 末尾に要素を追加
