@@ -2,12 +2,22 @@
 
 
 {
-  const scores = [80, 90, 40, 70];
+  // const scores = [80, 90, 40, 70];
 
-  scores.splice(1,1,40,50);
+  // const [a, b, c, d] = scores;
+  // console.log(a);
+  // console.log(b);
+  // console.log(c);
+  // console.log(d);
 
-  for (let i = 0; i < scores.length; i++) { // scores.lengthで要素の数より小さい
-    console.log(`Score ${i} : ${scores[i]}`); // S{} でインデントも表示
-  }
+  // const otherScores = [10,20];
+
+  // const scores = [80, 90, 40, 70 ...otherScores];
+
+let x = 30;
+let y = 70;
+[x, y] = [y, x];
+console.log(x);
+console.log(y);
 
 }

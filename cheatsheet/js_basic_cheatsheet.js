@@ -347,3 +347,21 @@ scores.shift(); // shift() 先頭の要素を削除 ()内は記載なし
 scores.pop(); // pop() 末尾の要素を削除 ()内は記載なし
 // 途中の要素の削除、追加
 scores.splice(1,1,40,50); // splice(変化開始の位置, 削除数, 追加要素, ・・・・)
+
+ // 配列に他の配列を追加 スプレッド構文
+const otherScores = [10,20];
+const scores = [80, 90, 40, 70, ...otherScores]; // 【...配列名】で追加できる
+function sum(s, v) {
+  console.log(a + b);
+}
+sum(...otherScores); // 30
+
+// 分割代入
+const scores = [80, 90, 40, 70];
+const [a, b, c, d] = scores;
+const [a, b, ...others]; // [80, 90,[40, 70]]の意味
+// 値の交換
+let x = 30;
+let y = 70;
+[x, y] = [y, x]; // xとyの値が交換
+console.log(x); // 出力して確認
