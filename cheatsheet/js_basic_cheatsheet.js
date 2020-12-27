@@ -402,3 +402,28 @@ const evenNumbers = numbers.filter((number) => {
 // 偶数の要素だけの配列作成①
 const evenNumbers = numbers.filter(number => number % 2 === 0);
 console.log(evenNumbers);
+
+
+
+
+// オブジェクトの作成
+const point = { // {} で囲む
+  x: 100, // ,で区切る
+  y: 180,
+};
+
+// プロパティ（値）の呼び出し
+console.log(point.x); // オブジェクト名.キー
+console.log(point['x']); // オブジェクト[キー]
+
+// プロパティ（値）の変更
+point.x = 200; // オブジェクト名.キー
+point['x'] = 200; // オブジェクト[キー]
+
+// プロパティ（値）の追加
+point.z = 120; // 新たなオブジェクト名.キー
+
+// プロパティ（値）の削除
+delete point.y // delete + 削除するオブジェクト名.キー
+
+
