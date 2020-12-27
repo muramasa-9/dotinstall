@@ -334,13 +334,13 @@ console.log(`Score : ${scores[1]}`);
 console.log(`Score : ${scores[2]}`);
 
 
-// for文で繰り返しを使って表示
+// 【for】文で繰り返しを使って表示
 for (let i = 0; i < scores.length; i++) { // scores.lengthで要素の数より小さい
   console.log(`Score ${i} : ${scores[i]}`); // S{} でインデントも表示
 }
 
 
-// forEach()で繰り返しをすっきり書く
+// 【forEach()】で繰り返しをすっきり書く
 const scores = [80, 90, 40, 70];
 // forEach(要素, インデント)を順番に取り出す
 scores.forEach((score, index) => {
@@ -356,6 +356,7 @@ scores.pop(); // pop() 末尾の要素を削除 ()内は記載なし
 // 途中の要素の削除、追加
 scores.splice(1,1,40,50); // splice(変化開始の位置, 削除数, 追加要素, ・・・・)
 
+
  // 配列に他の配列を追加 スプレッド構文
 const otherScores = [10,20];
 const scores = [80, 90, 40, 70, ...otherScores]; // 【...配列名】で追加できる
@@ -363,6 +364,7 @@ function sum(s, v) {
   console.log(a + b);
 }
 sum(...otherScores); // 30
+
 
 // 分割代入
 const scores = [80, 90, 40, 70];
@@ -373,3 +375,30 @@ let x = 30;
 let y = 70;
 [x, y] = [y, x]; // xとyの値が交換
 console.log(x); // 出力して確認
+
+
+// 【map()】 で各要素を一律に変更
+const prices = [100, 190, 200];
+// 価格を20円ずつ値上げする①
+const updatedPrices = prices.map((price) => {
+  return price + 20;
+});
+// 価格を20円ずつ値上げする②
+// 引数１つなので()省略、return１行も{}省略
+const updatedPrices = prices.map(price =>  price + 20);
+console.log(updatedPrices);
+
+
+// 【filter()】 で条件に合う要素を抽出して別の配列をつくる
+const numbers = [1, 4, 7, 8, 10];
+// 偶数の要素だけの配列作成①
+const evenNumbers = numbers.filter((number) => {
+    if ( number % 2 === 0) {
+      return true;
+    } else {
+      return false;
+    }
+});
+// 偶数の要素だけの配列作成①
+const evenNumbers = numbers.filter(number => number % 2 === 0);
+console.log(evenNumbers);
