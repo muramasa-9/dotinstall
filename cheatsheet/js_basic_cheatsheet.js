@@ -410,6 +410,7 @@ console.log(evenNumbers);
 const point = { // {} で囲む
   x: 100, // ,で区切る
   y: 180,
+// ...オブジェクト名, とスプレッド構文を使って他のオブジェクト内容を追加できる
 };
 
 // プロパティ（値）の呼び出し
@@ -425,5 +426,65 @@ point.z = 120; // 新たなオブジェクト名.キー
 
 // プロパティ（値）の削除
 delete point.y // delete + 削除するオブジェクト名.キー
+
+
+// オブジェクトの分割代入
+const otherProps = {
+  r: 4,
+  colore: 'red',
+};
+
+const point = { // {} で囲む
+  x: 100, // ,で区切る
+  y: 180,
+  ...otherProps, // 上のオブジェクト内容を追加
+};
+
+const {x, y, ...others} = pont; // {x, y, {r,color}} の意味
+
+
+
+
+// 【】でオブジェクトのプロパティを列挙
+const point = { // {} で囲む
+x: 100, // ,で区切る
+y: 180,
+};
+
+const keys = Object.keys(point);  // ①オブジェクトのすべてのキーを配列で取得
+keys.forEach(key => { // 定数にはforEach()が使える
+console.log(`key: ${key} Value: ${point[key]}`); // ${point[key]で値を表示
+
+
+
+// 複数の値
+const points = [
+  {x: 30, y: 20},
+  {x: 10, y: 50},
+  {x: 40, y: 40},
+]
+console.log(points[1].y); // 2番目のyの値を表示
+
+
+
+// 変数の挙動の違い
+let x  =  1;
+let y = x;
+x = 5;
+console.log(x); // x=5
+console.log(y); // y=1 順番通り
+
+let x  =  [1, 2];
+let y = x;
+x[0] = 5;
+console.log(x); // [5, 2]
+console.log(y); // [5, 2] 配列は元データを呼び出す
+
+let x  =  [1, 2];
+let y = [...x]; // スプレッド構文で値そのものを代入
+x[0] = 5;
+console.log(x); // [5, 2]
+console.log(y); // [1, 2]
+
 
 

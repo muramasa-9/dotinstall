@@ -2,20 +2,17 @@
 
 
 {
-  // オブジェクトの作成
+
+// 【】でオブジェクトのプロパティを列挙
   const point = { // {} で囲む
     x: 100, // ,で区切る
     y: 180,
   };
-  point.x = 200; // オブジェクト名.キー
-  point['y'] = 200;
 
-  point.z = 120; // 新たなオブジェクト名.キー
-
-// プロパティ（値）の削除
-  delete point.y
-// プロパティ（値）の呼び出し
-  console.log(point.x); // オブジェクト名.キー
-  console.log(point['y']); // オブジェクト[キー]
-  console.log(point['z']); // オブジェクト[キー]
+  const points = [
+    {x: 30, y: 20},
+    {x: 10, y: 50},
+    {x: 40, y: 40},
+  ]
+  console.log(points[1].y); // 2番目のyの値を表示
 }
