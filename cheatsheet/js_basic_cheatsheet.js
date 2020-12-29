@@ -523,7 +523,6 @@ console.log(second);
 
 
 // 数字計算の便利な命令---------------------------------------
-
 const scores = [10, 3, 9];
 
 // 要素を足す
@@ -552,7 +551,9 @@ Math.floor(Math.random() * (n + 1)); // nまでのランダム整数値
 Math.floor(Math.random() * (max + 1 - min)) + min; // minからmaxまでのランダム整数値
 
 
-// 日付を使う
+
+
+// 日付を使う---------------------------------------
 const d = new Date(); // new Date() で現在日時
 d.getFullYear(); // 2020 西暦
 d.getMonth(); // 0-11 月(Jan:0, Feb:1, Mar:3, ...)
@@ -571,3 +572,65 @@ d.setDate(d.getDate() + 3); // ３日後 2020/12/06 10:20:30
 
 
 
+// 便利なダイアログ---------------------------------------
+// 【aleat('お知らせ文')】ポップ表示 => OK
+alert('お知らせがあります');
+
+// 【confirm('確認分')】確認を求める => キャンセル or OK
+confirm('削除しますか？');
+const answer = confirm('削除しますか？');
+if (answer) { // OKを押した時
+  console.log('削除しました');
+} else { // キャンセルを押した時
+  console.log('キャンセルしました');
+}
+
+
+
+
+// タイマー機能---------------------------------------
+function showTime() { // 現在日時を表示
+  console.log(new Date());
+}
+setInterval(showTime, 1000); // (関数名, ミリ秒単位) ※関数名の後に()不要
+
+// タイマーを止める処理
+let i = 0; // カウンター用の変数
+function showTime() {
+  console.log(new Date());
+  i++; // iは1ずつ増える
+  if (i > 2) { // iが3になった時
+    clearInterval(intervalId); // タイマー停止
+  }
+}
+const intervalId = setInterval(showTime, 1000);
+
+
+// 時間になったら処理を実行①
+function showTime() {
+  console.log(new Date());
+}
+setTimeout(showTime, 2000); // 2秒後に上の処理を一度だけ実行
+
+
+// 時間になったら処理を実行②--繰り返し
+function showTime() {
+  console.log(new Date());
+  setTimeout(showTime, 2000); // 2秒後に上の処理を実行
+}
+showTime(); // 上の処理を呼び出し => 2秒後に繰り返し処理になる
+
+
+  // 時間になったら処理を実行③--繰り返し回数指定
+let i = 0; // カウンター用の変数
+  function showTime() {
+    console.log(new Date());
+    const timeoutId = setTimeout(showTime, 2000); // 2秒後に上の処理を実行
+    i++;
+    if (i > 2) { // 3回で繰り返しを停止
+      clearTimeout(timeoutId);
+    }
+  }
+  showTime(); // 上の処理を呼び出し => 2秒後に繰り返し処理になる
+
+  
