@@ -623,14 +623,131 @@ showTime(); // 上の処理を呼び出し => 2秒後に繰り返し処理にな
 
   // 時間になったら処理を実行③--繰り返し回数指定
 let i = 0; // カウンター用の変数
-  function showTime() {
-    console.log(new Date());
-    const timeoutId = setTimeout(showTime, 2000); // 2秒後に上の処理を実行
-    i++;
-    if (i > 2) { // 3回で繰り返しを停止
-      clearTimeout(timeoutId);
-    }
+function showTime() {
+  console.log(new Date());
+  const timeoutId = setTimeout(showTime, 2000); // 2秒後に上の処理を実行
+  i++;
+  if (i > 2) { // 3回で繰り返しを停止
+    clearTimeout(timeoutId);
   }
-  showTime(); // 上の処理を呼び出し => 2秒後に繰り返し処理になる
+}
+showTime(); // 上の処理を呼び出し => 2秒後に繰り返し処理になる
 
-  
+setTimeout(); // 処理が終わってインターバル分の時間をあける
+setInterval(); // 処理の時間関係なく等間隔で処理を開始
+
+
+
+
+// 例外処理---------------------------------------
+const name = 'koga';
+name.toUpperCase(); // 小文字を大文字に変換
+
+// 例外が発生しても【try】【catch】で最後まで処理する
+const name = 5;
+  try {
+    console.log(name.toUpperCase()); // 小文字を大文字に変換 文字列のみ使える
+  } catch (e) { // (引数名)を指定しておくとエラー時の情報を扱える
+    console.log(e); // 例外が起きた時の処理
+  }
+  console.log('Finish!!');
+
+
+
+
+// クラス---------------------------------------
+class Post { // class クラス名{} クラス名の頭は大文字
+  constructor(text) { // constructor(引数) で初期化
+    this.text = text; // クラス内のインスタンスはthis.で指定
+    this.likeCount = 0;
+  }
+  show() {
+    console.log(`${this.text} - ${this.likeCount}いいね`);
+  }
+
+}
+const posts = [ // new クラス名() でインスタンスの作成
+  new Post('JavaScriptの勉強中。。。。'), // () の中は入れたいテキスト
+  new Post('プログラミングの勉強中。。。。'),
+];
+
+posts[0].show(); //   show() で表示
+posts[1].show();
+
+ // 上のクラスをカプセル化
+class Post {
+  constructor(text) {
+    this.text = text;
+    this.likeCount = 0;
+  }
+
+  show() {
+    console.log(`${this.text} - ${this.likeCount} likes`);
+  }
+
+  like() {
+    this.likeCount++; // 1追加
+    this.show(); // 呼び出したら表示
+  }
+
+// 静的メソッド
+  // thisは使えない
+  static showInfo() { // static で直接呼び出せる
+    console.log('Post class vesion 1.0');
+}
+
+const posts = [
+  new Post('JavaScriptの勉強中。。。。'),
+  new Post('プログラミングの勉強中。。。。'),
+];
+
+posts[0].like(); // 表示されるよう設定している
+Post.showInfo(); // クラス名で直接呼び出し
+
+
+// クラスの承継
+// 同じ内容を次のクラスが引き継ぐ
+class Post { // 親クラス
+  constructor(text) {
+    this.text = text;
+    this.likeCount = 0;
+  }
+
+  show() {
+    console.log(`${this.text} - ${this.likeCount} likes`);
+  }
+
+  like() {
+    this.likeCount++;
+    this.show();
+  }
+}
+
+class SponsoredPost extends Post { // extends 親クラス名で内容を引き継ぐ
+  constructor(text, sponsor) {
+    super(text); // 小クラスでthisを使うために必要
+    this.sponsor = sponsor;
+  }
+
+  show() {
+    super.show(); // 親クラスのshow()を引き継ぐ
+    console.log(`...sponsored by ${this.sponsor}`);
+  }
+
+  // like()はそのまま引き継ぐ
+
+}
+
+const posts = [
+  new Post('JavaScriptの勉強中。。。。'),
+  new Post('プログラミングの勉強中。。。。'),
+  new SponsoredPost('3分動画でマスターしよう', 'dotinstall'),
+];
+
+posts[2].show();
+posts[2].like();
+
+
+
+
+
