@@ -750,4 +750,57 @@ posts[2].like();
 
 
 
+// DOM------------------------------------------------------------------------------
+
+function update() {
+  // h1を変更する htmlでid='target'
+  // document.querySelector('要素').textContent = '変更する文書';
+  document.querySelector('h1').textContent = 'Changed!';
+  document.querySelector('#target').textContent = 'Changed!'; // id を使った方法① #が必要
+  document.getElementById('target').textContent = 'Changed!'; // id を使った方法② #は不要
+}
+setTimeout(update, 1000); // 1秒後にh1を変更
+
+// 複数の要素を変更する
+function update() {
+  // h1を変更する
+  document.querySelector('p').textContent = 'Changed!'; // querySelector('p')は最初の要素しか対応しない
+  document.querySelectorAll('p')[1].textContent = 'Changed!'; // querySelectorAll('p')[変更したい番号]で指定した要素を変更
+  document.querySelectorAll('p')[1].textContent = 'Changed!'; // querySelectorAll('p')[変更したい番号]で指定した要素を変更
+  document.querySelectorAll('p').forEach((p, index) => { // forEachですべての要素を変更
+    p.textContent = `${index}番目のpです！`;
+  });
+}
+
+
+// 【要素を取得する方法】
+// id 属性がついていたら,,,,  getElementById('id');
+// 1つの要素を取り出すなら...  querySelector('section h1');
+// 複数の要素を取り出すなら①...  querySelectorAll('ul > li');
+// 複数の要素を取り出すなら②...  getElementsByTagName('h1');
+// 複数の要素を取り出すなら③...  getElementsByClassName('box');
+
+
+// 【DOMの要素関係】
+// node = 改行含めたすべての要素
+// 要素 = 改行以外の要素
+// 子nodeすべて... .childNodes  ※textNode(改行要素)も含む
+// 最初と最後の子node... .firstChild  .lastChild
+// 改行以外の子要素... .children
+// 改行以外の最初と最後の子要素... .firstElementChild  .lastElementChild
+// 子nodeから見た親node... .parentNode
+// 前後の兄弟node... .previousSibling  .nextSibling
+// 前後の兄弟要素... .previousElementSibling  .nextSibling
+
+
+
+
+// ボタンを押したら変化する
+// document.querySelector('button')でボタンを選択
+// .addEventListener('click')でクリックの動作 => 押した時の処理
+document.querySelector('button').addEventListener('click', () => {
+  document.getElementById('target').textContent = 'Changed!';
+});
+
+
 
