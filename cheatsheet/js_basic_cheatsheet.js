@@ -773,7 +773,7 @@ function update() {
 }
 
 
-// 【要素を取得する方法】
+// 【要素を取得する方法】---------------------------------------
 // id 属性がついていたら,,,,  getElementById('id');
 // 1つの要素を取り出すなら...  querySelector('section h1');
 // 複数の要素を取り出すなら①...  querySelectorAll('ul > li');
@@ -781,7 +781,7 @@ function update() {
 // 複数の要素を取り出すなら③...  getElementsByClassName('box');
 
 
-// 【DOMの要素関係】
+// 【DOMの要素関係】---------------------------------------
 // node = 改行含めたすべての要素
 // 要素 = 改行以外の要素
 // 子nodeすべて... .childNodes  ※textNode(改行要素)も含む
@@ -795,7 +795,7 @@ function update() {
 
 
 
-// ボタンを押したら変化する
+// ボタンを押したら変化する---------------------------------------
 // document.querySelector('button')でボタンを選択
 // .addEventListener('click')でクリックの動作 => 押した時の処理
 document.querySelector('button').addEventListener('click', () => {
@@ -824,7 +824,34 @@ document.querySelector('button').addEventListener('click', () => {
   // 特定のクラスがあれば外す処理②
   targetNode.classList.toggle('my-color'); // ①と同じ意味
 
+  // html からクラスを呼び出す
+  targetNode.textContent = 'Dotinstall'; // 通常のテキスト変更
+  targetNode.textContent = targetNode.dataset.translation; // htmlのクラスから呼び出し .data-translation => .dataset.translation
 });
 
+
+
+
+// 要素を追加する---------------------------------------
+document.querySelector('button').addEventListener('click', () => {
+  const item2 = document.createElement('li'); // リストに空のliを追加
+  item2.textContent = 'item 2'; // 追加したliにテキストを追加
+
+  const ulNode = document.querySelector('ul'); // querySelector()で親要素を取得
+  ulNode.appendChild(item2); // 親要素.appendChild(追加要素);親要素の末尾に子要素を追加
+});
+
+
+
+
+// 要素を複製、挿入する---------------------------------------
+document.querySelector('button').addEventListener('click', () => {
+  const item0 = document.querySelectorAll('li')[0]; // リストの０番目を呼び出し
+  const copy = item0.cloneNode(true); // .cloneNode(true)で要素までコピー (false)だと空の要素作成
+
+  const ul = document.querySelector('ul'); // 親要素呼び出し
+  const item2 = document.querySelectorAll('li')[2]; // 挿入したい部分の後ろの要素を呼び出し
+  ul.insertBefore(copy, item2); // .insertBefore(入れたい要素, 後ろの要素)
+});
 
 

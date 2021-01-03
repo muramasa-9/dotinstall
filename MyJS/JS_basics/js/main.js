@@ -4,22 +4,12 @@
 {
 
   document.querySelector('button').addEventListener('click', () => {
-    const targetNode = document.getElementById('target'); // 同じ表記を定数化
-    // targetNode.textContent = 'Changed!';
+    const item0 = document.querySelectorAll('li')[0]; // リストの０番目を呼び出し
+    const copy = item0.cloneNode(true); // .cloneNode(true)で要素までコピー (false)だと空の要素作成
 
-    // 特定のクラスがあれば外す処理①
-    // if (targetNode.classList.contains('my-color') === true) {
-      //   targetNode.classList.remove('my-color'); // classList.remove()でクラス削除
-      // } else {
-        //   targetNode.classList.add('my-color'); // なければ追加
-        // }
-
-    // 特定のクラスがあれば外す処理②
-    targetNode.classList.toggle('my-color');
-
-
-
-
+    const ul = document.querySelector('ul'); // 親要素呼び出し
+    const item2 = document.querySelectorAll('li')[2]; // 挿入したい部分の後ろの要素を呼び出し
+    ul.insertBefore(copy, item2); // .insertBefore(入れたい要素, 後ろの要素)
   });
 
 }
