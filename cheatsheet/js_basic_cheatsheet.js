@@ -802,5 +802,29 @@ document.querySelector('button').addEventListener('click', () => {
   document.getElementById('target').textContent = 'Changed!';
 });
 
+// ボタン変化を操作する
+document.querySelector('button').addEventListener('click', () => {
+  const targetNode = document.getElementById('target'); // 同じ表記を定数化
+  targetNode.textContent = 'Changed!'; // テキスト変更
+  targetNode.title = 'This is title!'; // Changesのtitle表示を変更
+  targetNode.style.color = 'red'; // Changesのcssも変更できる
+  targetNode.style.backgroundColor = 'skyblue'; // JSは-に注意 background-color => backgroundColor 頭大文字
+  targetNode.className = 'my-color'; // htmlのcssのクラスはclassNameで呼び出し
+  targetNode.className = 'my-color my-border'; // htmlで指定したクラスを保持するには追記が必要
+  targetNode.classList.add('my-color'); // classList.add()で既存のクラスに追加
+  targetNode.classList.contains('my-color'); // classrist.contains()で特定のクラスがあるのか確認できる
+
+  // 特定のクラスがあれば外す処理①
+  if (targetNode.classList.contains('my-color') === true) {
+    targetNode.classList.remove('my-color'); // classList.remove()でクラス削除
+  } else {
+    targetNode.classList.add('my-color'); // なければ追加
+  }
+
+  // 特定のクラスがあれば外す処理②
+  targetNode.classList.toggle('my-color'); // ①と同じ意味
+
+});
+
 
 
