@@ -855,3 +855,148 @@ document.querySelector('button').addEventListener('click', () => {
 });
 
 
+
+
+// 要素の削除---------------------------------------
+document.querySelector('button').addEventListener('click', () => {
+  const item1 = document.querySelectorAll('li')[1]; // 削除する要素を呼び出し
+
+  // ①古いブラウザでは使えない時がある
+  item1.remove();
+
+  // ②親Node.removeChild(削除するNode);
+  document.querySelector('ul').removeChild(item1);
+});
+
+
+
+
+// input要素の操作---------------------------------------
+// 入力 => ボタンクリック => 要素追加 => 繰り返し
+document.querySelector('button').addEventListener('click', () => {
+  const li = document.createElement('li'); // li要素を作成
+  const text = document.querySelector('input'); // input要素を呼び出し
+  li.textContent = text.value; // valueでテキストを取得
+  document.querySelector('ul').appendChild(li); // appendChild(要素)でulに追加
+
+  text.value = ''; // 空文字にする
+  text.focus(); // 入力できる状態にフォーカスする
+});
+
+
+
+
+// selectBoxの操作---------------------------------------
+document.querySelector('button').addEventListener('click', () => {
+  const li = document.createElement('li'); // li要素を作成
+  const color = document.querySelector('select'); // select要素を呼び出し
+  // li にテキスト挿入 .valueで選択された値 .selectedIndexで何番目
+  li.textContent = `${color.value} - ${color.selectedIndex}`;
+  document.querySelector('ul').appendChild(li); // appendChild(要素)でulに追加
+});
+
+
+
+
+// radioボタンの操作---------------------------------------
+document.querySelector('button').addEventListener('click', () => {
+  const colors = document.querySelectorAll('input'); // input要素を指定
+  let selectedColor; // 選択した値を変数で指定
+
+  colors.forEach(color => { // forEach()で繰り返し処理
+    // 要素がチェックされたらその値を selectColor に代入
+    if (color.checked === true) { // .checked チェックが入っていたら
+      selectedColor = color.value; // selectColor に color.value の値を代入
+    }
+  });
+
+  const li = document.createElement('li'); // li 要素を作成
+  li.textContent = selectedColor; // 作成したliにテキストを挿入
+  document.querySelector('ul').appendChild(li); // 親要素ulに子要素liを追加
+});
+
+
+
+
+// checkboxの操作---------------------------------------
+document.querySelector('button').addEventListener('click', () => {
+  const colors = document.querySelectorAll('input'); // input要素を指定
+  const selectedColors = []; // 複数選択した値のリスト
+
+  colors.forEach(color => { // forEach()で繰り返し処理
+    // 要素がチェックされたらその値を selectColor に代入
+    if (color.checked === true) { // .checked チェックが入っていたら
+      selectedColors.push(color.value); // selectColor に push() で値を追加
+    }
+  });
+
+  const li = document.createElement('li'); // li 要素を作成
+  li.textContent = selectedColors.join(','); // 作成したliに .join()でリストを,区切りで挿入 ※実はリストは.join()がなくても,区切りで表示される
+  document.querySelector('ul').appendChild(li); // 親要素ulに子要素liを追加
+});
+
+
+
+
+// ダブルクリックで文字表示---------------------------------------
+  // .addEventListener()でイベントを追加 'dblclick'はダブルクリック
+  document.querySelector('button').addEventListener('dblclick', () => {
+    console.log('Double Clicked!');
+  });
+
+
+
+
+  // マウスを動かしたら文字表示---------------------------------------
+  // documentに直接イベント追加 'mousemove'はマウスを動かした時
+  document.addEventListener('mousemove', e => {
+    // console.log('Moved!'); // マウスを動かした回数も表示する
+    console.log(e.clientX, e.clientY); // .clientX,Yはブラウザの左上を基準としたX,Y座標を表示
+  });
+
+
+
+
+  // キーボードを押すとキーの文字を表示---------------------------------------
+  // documentに直接イベント追加 'keydown'はキーボードを押した時
+  document.addEventListener('keydown', e => {
+    console.log(e.key); // .keyは押したキーを取得
+  });
+
+
+
+
+  // フォーカス時のイベント---------------------------------------
+  const text = document.querySelector('textarea');
+  // focusはフォーカスした時
+  text.addEventListener('focus', () => {
+    console.log('focus!');
+  });
+
+  // blurはフォーカスが外れた時
+  text.addEventListener('blur', () => {
+    console.log('blur!');
+  });
+
+
+
+
+// 内容変更時のイベント---------------------------------------
+const text = document.querySelector('textarea');
+// inputは内容が更新された時
+text.addEventListener('input', () => {
+  console.log('input!');
+  console.log(text.value.length); // 文字数を取得
+});
+
+// changeは内容更新が確定した時
+text.addEventListener('change', () => {
+  console.log('change!');
+});
+
+
+// フォームの送信---------------------------------------
+
+
+
+
