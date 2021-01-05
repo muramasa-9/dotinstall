@@ -996,6 +996,20 @@ text.addEventListener('change', () => {
 
 
 // フォームの送信---------------------------------------
+// form に button を入れると submit というイベント発生
+document.querySelector('form').addEventListener('submit', e => {
+  e.preventDefault(); // .preventDefault()で既存の動作をキャンセル
+  // これがないとクリック後にすぐにリセットする
+  console.log('submit');
+
+  // formを使うとENTERキーで送信できる
+  // form内にbuttonがなくてもENTERキーで送信できる
+});
+
+
+
+
+// ---------------------------------------
 
 
 
