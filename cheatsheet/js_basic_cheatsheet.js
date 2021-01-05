@@ -539,9 +539,9 @@ console.log(avg);
 
 
 // 小数点以下の扱い
-Math.floor(avg); // 【Math.floor()】小数点以下を切り捨て
-Math.ceil(avg); // 【Math.floor()】小数点以下を切り上げ
-Math.round(avg); // 【Math.floor()】小数点以下を四捨五入
+Math.floor(avg); // 【Math.floor()】小数点以下を切り捨て= 整数
+Math.ceil(avg); // 【Math.ceil()】小数点以下を切り上げ= 整数
+Math.round(avg); // 【Math.round()】小数点以下を四捨五入= 整数
 avg.toFixed(3); // 【定数名.toFixed(数);】小数点の桁数指定
 
 
