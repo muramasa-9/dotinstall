@@ -242,6 +242,28 @@ print({i * 3 for i in range(10) if i % 2 == 0}) # {}で囲む
 
 
 
+# 【datetime】の使い方---------------------------------------
+# 特定の日からオリンピックまでの日数を調べる関数を作る
+import datetime
+def calc_days(y, m, d):
+  # タイムスタンプを得る
+  olympic = datetime.datetime(2021, 7, 24).timestamp() #オリンピックの日のスタンプを得る
+  target = datetime.datetime(y, m, d).timestamp()
+  # timestamp()は1970年1月1日0時0分0秒からの経過時間を秒数で取得
+
+  # ちなみに現在時刻から計算するには
+  n = datetime.datetime.now().timestamp()
+  
+  # 何日なのか調べる
+  perday = 60 * 60 * 24 # 一日を秒計算
+  days = (olympic - target) // perday # オリンピックまでの秒数を日に計算
+  # 計算結果を表示
+  s = "{0}/{1}/{2}から{3}日後です。".format(y, m, d, int(days)) # 数字を埋め込み
+  print(s)
+
+
+
+
 # numpyの使い方 ベクトルや数値計算で使用---------------------------------------
 import numpy as np # npにすることが多い
 x = np.array([1, 2, 3]) # array([])でベクトルや行列を表示
