@@ -523,6 +523,9 @@ console.log(hour);
 console.log(minute);
 console.log(second);
 
+// 満たない部分を指定の文字で埋める
+// 文字列.padStart(列数, 埋める文字) 列数に満たない時は埋める文字で補填
+String(month + 1).padStart(2, 0) // 2桁に満たない１桁のときは頭に0をつける =＞ 01,02,03,...
 
 
 
@@ -573,6 +576,10 @@ const d = new Date(2020, 10); // 2020/11/01 00:00:00
 d.setHours(10, 20, 30); // 2020/11/01 10:20:30
 d.setDate(33); // 2020/12/03 10:20:30 超えたら自動補正
 d.setDate(d.getDate() + 3); // ３日後 2020/12/06 10:20:30
+
+// 今月１日 => new Date(year, month, 1)
+// 先月末日 => new Date(year, month, 0)
+
 
 
 
