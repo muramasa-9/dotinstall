@@ -2,6 +2,22 @@
 
 
 
+# 便利な数値の操作---------------------------------------
+
+# 【(*args)】引数の数がわからなくても全て選択
+def tasu(*args):
+  r = 0
+  for v in args: # args からひとつずつ値を代入
+    r += v
+  return r
+
+print(tasu(1, 2)) # 3
+print(tasu(1, 2, 3)) # 6
+print(tasu(1, 2, 3, 4)) # 10
+
+
+
+
 # 【リスト】---------------------------------------
 
 # 足し算ができる str()とint()は混合不可
@@ -14,6 +30,8 @@ a.append(4)
 
 # 要素を削除 【del(リスト名[削除要素])】
 del(a[2]) # リストの2番目を削除
+
+
 
 
 # データの集計---------------------------------------
@@ -163,6 +181,14 @@ sales = {'tomonari': 200, 'aiko': 400}
 for key, value in sales.items():
   print('{0}: {1}' .format(key, value))
 
+# 【(**atgs)】で任意の数のキーワード引数を受け取る
+def show_keyword(**args):
+  for key, value in args.items(): # argsのキーと値を key, value に代入
+    print(key + " = " + str(value))
+
+show_keyword(a=55, b=48)
+show_keyword(c=55, d=48, f=98)
+
 
 
 
@@ -202,6 +228,7 @@ print(list(map(triple, [1, 2, 3]))) # 表示 3 6 9
 
 
 # 【lambda 引数: 処理】 ※上記を一行で表示
+# lambda 引数 : 式
 print(list(map(lambda n: n * 3, [1, 2, 3])))
 
 
@@ -253,7 +280,7 @@ def calc_days(y, m, d):
 
   # ちなみに現在時刻から計算するには
   n = datetime.datetime.now().timestamp()
-  
+
   # 何日なのか調べる
   perday = 60 * 60 * 24 # 一日を秒計算
   days = (olympic - target) // perday # オリンピックまでの秒数を日に計算
