@@ -1,0 +1,10 @@
+body {
+  margin-top: 40x;
+  font-family: 'Courer New', monopace;
+  text-align: center;
+}
+
+#target {
+  font-size: 48px;
+  letter-spacing: .1em; /* 文字の隙間 */
+}
