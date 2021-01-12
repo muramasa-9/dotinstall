@@ -314,6 +314,18 @@ console.log(x); // 2
 
 
 
+// ''.repeat()で繰り返し
+'_'.repeat(loc); // '文字'をlocの数だけつなげる
+
+// .substring()で()番目の文字を取り出し
+word.substring(番号);
+
+// .toFixed(2)で小数点２桁まで、 ミリ秒を秒に計算し直す
+const elapsedTime = ((Date.now() - startTime) / 1000).toFixed(2);
+
+
+
+
 // object------------------------------------------------------------------------------
 
 
