@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>Line google chart</title>
+  </head>
+  <body>
+    <div id="target"></div>
+
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+      (function() {
+        'use strict';
+
+        function drawChart() {
+          // スプレッドシートを呼び出し
+          var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1x2eirUTPCrLfH4Teo5f13f-IdWnrr74dVWfdq51XTzA/edit?usp=sharing');
+          Query.send(handleQueryResponse);
+        }
+
+
+        // 画像描写の関数
+        function handleQueryResponse(response) {
+          var target = document.getElementById('target');
+          var data;
+          var options = {
+            title: 'My Chart',
+            width: 500,
+            height: 300,
+          };
+          var chart = new google.visualization.PeiChart(target);
+          data = response.getDataTable();
+          chart.draw(data, options);
+        }
+
+
+        google.charts.load('current', {packages: ['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+      })();
+    </script>
+  </body>
+</html>

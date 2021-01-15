@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>Circle google chart</title>
+  </head>
+  <body>
+    <div id="target"></div>
+
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+      (function() {
+        'use strict';
+
+        function drawChart() {
+          var target = document.getElementById('target');
+          var data;
+          var options = {
+            title: 'My Chart',
+            width: 500,
+            height: 300,
+            backgroundColor: '#f8f8f8',
+            colors: ['#aaa', '#bbb', '#ccc'], // 各項目の色指定
+            slices: [1, {offset: 0.2}], // 1番目を切り出して20%拡大
+            pieHole: 0.4, // 中心に40%の穴
+            // is3D: true, // pie3Dとは共用できない
+          };
+          var chart = new google.visualization.PieChart(target);
+          // data = new google.visualization.DataTable();
+          // data.addColumn('string', 'Language'); // ('データ型', '列名')
+          // data.addColumn('number', 'Votes'); // ('データ型', '列名')
+          // data.addRow(['PHP', 30]); // 行の配列
+          // data.addRow(['Ruby', 20]); // 行の配列
+          // data.addRow(['Python', 10]); // 行の配列
+          data = new google.visualization.arrayToDataTable([
+            ['Language', 'Votes'],
+            ['PHP', 100],
+            ['Ruby', 20],
+            ['Python', 10]
+          ]);
+          chart.draw(data, options);
+        }
+
+
+        google.charts.load('current', {packages: ['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+
+      })();
+    </script>
+  </body>
+</html>

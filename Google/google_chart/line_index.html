@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>Line google chart</title>
+  </head>
+  <body>
+    <div id="target"></div>
+
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+      (function() {
+        'use strict';
+
+        function drawChart() {
+          var target = document.getElementById('target');
+          var data;
+          var options = {
+            title: 'My Chart',
+            width: 500,
+            height: 300,
+            hAxis: {title: 'Year'}, //横軸タイトル
+            vAxis: {title: 'Sales'}, //縦軸タイトル
+            curveType: 'function', // 曲線グラフ
+            pointSize: 10, // 点を追加
+            pointShape: 'square', // 点を■に
+          };
+
+
+          var chart = new google.visualization.LineChart(target); //  Line折れ線
+          data = new google.visualization.arrayToDataTable([
+            ['Year', '@Tomonari', {role: 'annotation'}, {role: 'certainty'}, '@Aiko', {role: 'certainty'}],
+            ['2014', 52, 'Campaign A', true, 89, true],
+            ['2015', 38, null, true, 78, true],
+            ['2014', 44, null, true, 88, true],
+            ['2014', 62, null, false, 91, false],
+          ]);
+          chart.draw(data, options);
+        }
+
+
+        google.charts.load('current', {packages: ['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+      })();
+    </script>
+  </body>
+</html>
