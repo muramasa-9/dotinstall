@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>Font Awesome</title>
+
+    <!-- SVGを登録 WEBvr.もある -->
+    <scrip>
+      FontAwesomeConfig = { searchPseudoElements: true };
+    </scrip>
+    <scrip src="https://kit.fontawesome.com/859bfdc7a1.js" crossorigin="anonymous"></scrip>
+
+    <style>
+      /* 疑似要素で使用 */
+      a.home::before {
+        /* JSを使うので一旦非表示 */
+        display: none;
+        font-family: 'font Awesome 6 solid';
+        /* '\'が必要 */
+        content: '\f015';
+      }
+    </style>
+
+  </head>
+  <body>
+
+    <!-- icon種類
+      fas (solid)
+      far (regular)
+      fal (light) 有料
+      fab (bland) -->
+    <i class="far fa-flag"></i>
+    <i class="fab fa-twitter"></i>
+    <i class="fas fa-camera-retro"></i>
+
+
+    <hr>
+    <!-- クラス
+      size:
+      - fa-xs 小
+      - fa-sm
+      - fa-lg
+      - fa-2x ... fa-10x 大 -->
+    <i class="fas fa-flag fa-xs"></i>
+    <i class="fas fa-flag fa-sm"></i>
+    <i class="fas fa-flag"></i>
+    <i class="fas fa-flag fa-lg"></i>
+    <i class="fas fa-flag fa-5x"></i>
+    <i class="fas fa-flag fa-10x"></i>
+
+    <hr>
+    <!-- 背景色変更 bg-色 -->
+    <i class="fas fa-flag fa-fw bg-pink"></i>
+
+    <!-- アイコンを白にする 'fa-inverse' -->
+    <i class="fas fa-lock fa-inverse"></i>
+    <!-- アイコンに色を付ける style="color:色" -->
+    <i class="fas fa-lock" style="color:red"></i>
+
+
+    <hr>
+    <!-- 'fa-fw'でiconの幅を固定一律 -->
+    <div><i class="fas fa-fw fa-home"></i>Home</div>
+    <div><i class="fas fa-fw fa-info"></i>About</div>
+    <div><i class="fas fa-fw fa-question"></i>Help</div>
+
+
+    <!-- listにするとiconは固定幅になるので'fa-fw'不要 -->
+    <ul class="fa-ul">
+      <li><span class="fa-li"><i class="fas fa-home"></i></span>Home</li>
+      <li><span class="fa-li"><i class="fas fa-info"></i></span>About</li>
+      <li><span class="fa-li"><i class="fas fa-question"></i></span>Help</li>
+    </ul>
+
+
+    <hr>
+    <!-- 回転アニメーション loading-icon -->
+    <!-- 'fa-spin'滑らかな回転 -->
+    <i class="fas fa-spinner fa-spin fa-3x"></i>
+    <i class="fas fa-circle-notch fa-spin fa-3x"></i>
+    <!-- 'fa-pulse'8フレームの分解して回転 -->
+    <i class="fas fa-spinner fa-pulse fa-3x"></i>
+    <i class="fas fa-circle-notch fa-pulsu fa-3x"></i>
+
+
+    <hr>
+    <!-- iconの変形 !!! SVG + JSバージョンのみ利用可能 !!!
+    Transform:
+    - Scaling (拡大・縮小)
+    - Positioning (移動)
+    - Rotating (回転) -->
+    <i class="fas fa-arrow-up"></i>
+
+    <!-- data-fa-transformの"grow-拡大" "shrink-縮小" 1/16で倍率表示 -->
+    <i class="fas fa-arrow-up" data-fa-transform="grow-16"></i>
+    <i class="fas fa-arrow-up" data-fa-transform="shrink-8"></i>
+
+    <hr>
+    <!-- data-fa-transformの"up" "down" "left" "right" 1/16で移動 -->
+    <i class="fas fa-arrow-up" data-fa-transform="pu-8"></i>
+    <i class="fas fa-arrow-up" data-fa-transform="down-8"></i>
+    <i class="fas fa-arrow-up" data-fa-transform="left-8"></i>
+    <i class="fas fa-arrow-up" data-fa-transform="right-8"></i>
+
+    <hr>
+    <!-- data-fa-transformの"rotate-度数"で回転 -->
+    <i class="fas fa-arrow-up" data-fa-transform="rotate-30"></i>
+    <i class="fas fa-arrow-up" data-fa-transform="rotate--30"></i>
+
+    <hr>
+    <!-- data-fa-transformの"flip-v""flip-h"で反転 -->
+    <i class="fas fa-arrow-up" data-fa-transform="flip-v"></i>
+    <i class="fas fa-arrow-up" data-fa-transform="flip-h"></i>
+    <i class="fas fa-arrow-up" data-fa-transform="flip-h flip-v"></i>
+
+    <hr>
+    <!-- iconの形で切り抜く data-fa-mask="baseIcon" -->
+    <i class="fas fa-lock" data-fa-mask="fas fa-file"></i>
+
+    <hr>
+    <!-- iconを重ねる 全体を"fa-layers"で囲む -->
+    <!-- 後に書いたiconが上に来る -->
+    <span class="fa-layers fa-fw bg-pink">
+      <i class="fas fa-file" data-fa-transform="grow-16"></i>
+      <i class="fas fa-lock fa-inverse"></i>
+    </span>
+
+
+    <hr>
+    <!-- iconにテキストを重ねる ※文字が下でできていない -->
+    <span class="fa-5x">
+      <span class="fa-layers bg-pink">
+        <i class="fas fa-file"></i>
+        <span class="fa-layres-text" style="color:orange">PDF</span>
+      </span>
+    </span>
+
+
+    <hr>
+    <!-- iconを擬似要素として使う ※できていない -->
+    <!-- 'head'の<style></style>を使用 -->
+    <a href="a" class="home">Home</a>
+
+
+  </body>
+</html>
