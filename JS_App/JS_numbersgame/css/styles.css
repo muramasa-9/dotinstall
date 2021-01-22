@@ -7,7 +7,6 @@ body {
 }
 
 #container {
-  width: 120px;
   margin: 16px auto;
 }
 
@@ -46,4 +45,19 @@ body {
   margin-bottom: 8px;
   font-size: 20px;
   text-align: right;
+}
+
+#btn {
+  cursor: pointer;
+  user-select: none;
+  background: #f44336;
+  padding: 8px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 0 #d1483e;
+}
+
+#btn:active {
+  box-shadow: none;
+  margin-top: 12px;
 }

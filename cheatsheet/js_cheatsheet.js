@@ -106,6 +106,13 @@ price--; // pricc -1
 
 
 
+// 文字列と数値---------------------------------------
+// parseInt(文字列, 進数)で数値に変更
+// textContentで取り出したものは必ず文字列
+parseInt(this.el.textContent, 10)
+
+
+
 // データ型の種類---------------------------------------
 console.log(typeof 'hello'); // string
 console.log(typeof 5); // number
