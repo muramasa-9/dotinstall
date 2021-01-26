@@ -396,22 +396,26 @@ let y = 70;
 console.log(x); // 出力して確認
 
 
+
+
 // 【map()】 で各要素を一律に変更---------------------------------------
+// 新しい配列を作成できる
 const prices = [100, 190, 200];
 // 価格を20円ずつ値上げする①
 const updatedPrices = prices.map((price) => {
   return price + 20;
 });
 // 価格を20円ずつ値上げする②
-// 引数１つなので()省略、return１行も{}省略
+// 引数１つなので(){}省略、return１行も{}省略
 const updatedPrices = prices.map(price =>  price + 20);
-console.log(updatedPrices);
+
+
 
 
 // 【filter()】 で条件に合う要素を抽出して別の配列をつくる---------------------------------------
 const numbers = [1, 4, 7, 8, 10];
 // 偶数の要素だけの配列作成①
-const evenNumbers = numbers.filter((number) => {
+const evenNumbers = numbers.filter(number => {
     if ( number % 2 === 0) {
       return true;
     } else {
@@ -420,7 +424,6 @@ const evenNumbers = numbers.filter((number) => {
 });
 // 偶数の要素だけの配列作成①
 const evenNumbers = numbers.filter(number => number % 2 === 0);
-console.log(evenNumbers);
 
 
 
