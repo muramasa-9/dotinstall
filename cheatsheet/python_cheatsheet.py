@@ -181,7 +181,7 @@ sales = {'tomonari': 200, 'aiko': 400}
 for key, value in sales.items():
   print('{0}: {1}' .format(key, value))
 
-# 【(**atgs)】で任意の数のキーワード引数を受け取る
+# 【(**args)】で任意の数のキーワード引数を受け取る
 def show_keyword(**args):
   for key, value in args.items(): # argsのキーと値を key, value に代入
     print(key + " = " + str(value))
@@ -251,13 +251,13 @@ print(list(filter(lambda n: n % 2 == 0, range(10))))
 
 # 例）0-9のリスト
 print([i for i in range(10)])
-# 後ろから読んで、rengeの0-9のリストから一つずつ取り出してiに入れて、そのままiを取り出す
+# 後ろから読んで、rangeの0-9のリストから一つずつ取り出してiに入れて、そのままiを取り出す
 
 print([i * 3 for i in range(10)])
-# 後ろから読んで、rengeの0-9のリストから一つずつ取り出してiに入れて、それに3をかけてを取り出す
+# 後ろから読んで、rangeの0-9のリストから一つずつ取り出してiに入れて、それに3をかけてを取り出す
 
 print([i * 3 for i in range(10) if i % 2 == 0])
-# 後ろから読んで、rengeの0-9のリストから偶数（余り０）取り出してiに入れて、それに3をかけてを取り出す
+# 後ろから読んで、rangeの0-9のリストから偶数（余り０）取り出してiに入れて、それに3をかけてを取り出す
 # if i % 2 == 0 で偶数を表す
 
 # ジェネレーター

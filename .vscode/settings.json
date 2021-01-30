@@ -3,5 +3,15 @@
 "jupyter.jupyterServerType": "local",
 "git.ignoreLimitWarning": true,
 "editor.formatOnSave": true,
-"editor.defaultFormatter": "esbenp.prettier-vscode"
+"editor.defaultFormatter": "esbenp.prettier-vscode",
+"cSpell.words": [
+  "Saiyan",
+  "aiko",
+  "goku",
+  "imanishi",
+  "menseki",
+  "ndim",
+  "numpy",
+  "tasu"
+]
 }
