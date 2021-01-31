@@ -5,13 +5,17 @@
 "editor.formatOnSave": true,
 "editor.defaultFormatter": "esbenp.prettier-vscode",
 "cSpell.words": [
+  "Booo",
   "Saiyan",
   "aiko",
+  "dotinstall",
   "goku",
   "imanishi",
+  "koga",
   "menseki",
   "ndim",
   "numpy",
+  "skyblue",
   "tasu"
 ]
 }
