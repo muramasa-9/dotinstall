@@ -3,7 +3,7 @@
 
 // htmlに書くとき---------------------------------------
 // <script></script>で囲む ↓以下記入内容
-  'use scrict'; // エラーが発見しやすい
+  'use strict'; // エラーが発見しやすい
 // documentは書類全般、getElementById('')でID指定
 // ddEventListener('動作', () => {実行内容}は動作したら実行内容のイベントを追加してという指示
   document.getElementById('target').addEventListener('click', () => {
@@ -14,7 +14,7 @@
 // クラスの指定方法がこれ
     document.getElementById('target').classList.add('circle');
 
-// 【toggle】は'taget'に’circle’クラスがなければつける、あれば外す
+// 【toggle】は'target'に’circle’クラスがなければつける、あれば外す
     document.getElementById('target').classList.toggle('circle');
   });
 
@@ -94,9 +94,9 @@ console.log(price * 140);
 
 price += 100; // priceに100を足す
 price *= 2 // priceかける２
-price += 1; // pricc +1
-price++; // pricc +1
-price--; // pricc -1
+price += 1; // price +1
+price++; // price +1
+price--; // price -1
 
 // 【定数・変数】の名前のルール
 // 大文字と小文字は区別する
@@ -255,20 +255,20 @@ do {
 
 
 // 関数で処理をまとめる---------------------------------------
-function showad(message = 'ad') { // function 関数名(仮引数) で指定
-  // showad(引数名 = '指定名')の引数の記載がないと'ad'と表示する
+function showAd(message = 'ad') { // function 関数名(仮引数) で指定
+  // showAd(引数名 = '指定名')の引数の記載がないと'ad'と表示する
   console.log('----------------');
   console.log(`-------${message}---------`); // バッククオーツと＄｛｝で引数引用
   console.log('----------------');
 }
 
-showad('header ad'); // 関数の呼び出し(実引数) 【;】を忘れないよう注意
+showAd('header ad'); // 関数の呼び出し(実引数) 【;】を忘れないよう注意
 console.log('Tom is great!');
 console.log('Bob is great!');
-showad('ad');
+showAd('ad');
 console.log('Steve is great!');
 console.log('Richard is great!');
-showad('footer ad');
+showAd('footer ad');
 
 
 
@@ -453,7 +453,7 @@ delete point.y // delete + 削除するオブジェクト名.キー
 // オブジェクトの分割代入
 const otherProps = {
   r: 4,
-  colore: 'red',
+  color: 'red',
 };
 
 const point = { // {} で囲む
@@ -475,8 +475,8 @@ y: 180,
 
 const keys = Object.keys(point);  // ①オブジェクトのすべてのキーを配列で取得
 keys.forEach(key => { // 定数にはforEach()が使える
-console.log(`key: ${key} Value: ${point[key]}`); // ${point[key]で値を表示
-
+  console.log(`key: ${key} Value: ${point[key]}`); // ${point[key]で値を表示
+});
 
 
 // 複数の値---------------------------------------
@@ -607,7 +607,7 @@ d.setDate(d.getDate() + 3); // ３日後 2020/12/06 10:20:30
 
 
 // 便利なダイアログ---------------------------------------
-// 【aleat('お知らせ文')】ポップ表示 => OK
+// 【alert('お知らせ文')】ポップ表示 => OK
 alert('お知らせがあります');
 
 // 【confirm('確認分')】確認を求める => キャンセル or OK
@@ -698,8 +698,8 @@ class Post { // class クラス名{} クラス名の頭は大文字
   show() {
     console.log(`${this.text} - ${this.likeCount}いいね`);
   }
-
 }
+
 const posts = [ // new クラス名() でインスタンスの作成
   new Post('JavaScriptの勉強中。。。。'), // () の中は入れたいテキスト
   new Post('プログラミングの勉強中。。。。'),
@@ -723,12 +723,8 @@ class Post {
     this.likeCount++; // 1追加
     this.show(); // 呼び出したら表示
   }
-
-// 静的メソッド
-  // thisは使えない
-  static showInfo() { // static で直接呼び出せる
-    console.log('Post class vesion 1.0');
 }
+
 
 const posts = [
   new Post('JavaScriptの勉強中。。。。'),
@@ -738,6 +734,11 @@ const posts = [
 posts[0].like(); // 表示されるよう設定している
 Post.showInfo(); // クラス名で直接呼び出し
 
+// 静的メソッド
+// thisは使えない
+// static showInfo() { // static で直接呼び出せる
+//   console.log('Post class version 1.0');
+// }
 
 // クラスの承継
 // 同じ内容を次のクラスが引き継ぐ
@@ -846,7 +847,7 @@ document.querySelector('button').addEventListener('click', () => {
   targetNode.className = 'my-color'; // htmlのcssのクラスはclassNameで呼び出し
   targetNode.className = 'my-color my-border'; // htmlで指定したクラスを保持するには追記が必要
   targetNode.classList.add('my-color'); // classList.add()で既存のクラスに追加
-  targetNode.classList.contains('my-color'); // classrist.contains()で特定のクラスがあるのか確認できる
+  targetNode.classList.contains('my-color'); // classList.contains()で特定のクラスがあるのか確認できる
 
   // 特定のクラスがあれば外す処理①
   if (targetNode.classList.contains('my-color') === true) {
@@ -1044,7 +1045,5 @@ document.querySelector('form').addEventListener('submit', e => {
 
 
 // ---------------------------------------
-
-
 
 
