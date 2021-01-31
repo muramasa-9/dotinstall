@@ -801,7 +801,6 @@ function update() {
   // h1を変更する
   document.querySelector('p').textContent = 'Changed!'; // querySelector('p')は最初の要素しか対応しない
   document.querySelectorAll('p')[1].textContent = 'Changed!'; // querySelectorAll('p')[変更したい番号]で指定した要素を変更
-  document.querySelectorAll('p')[1].textContent = 'Changed!'; // querySelectorAll('p')[変更したい番号]で指定した要素を変更
   document.querySelectorAll('p').forEach((p, index) => { // forEachですべての要素を変更
     p.textContent = `${index}番目のpです！`;
   });
