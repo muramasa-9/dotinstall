@@ -894,7 +894,6 @@ document.querySelector('button').addEventListener('click', () => {
 // 要素の削除---------------------------------------
 document.querySelector('button').addEventListener('click', () => {
   const item1 = document.querySelectorAll('li')[1]; // 削除する要素を呼び出し
-
   // ①古いブラウザでは使えない時がある
   item1.remove();
 
@@ -1006,7 +1005,7 @@ document.querySelector('button').addEventListener('click', () => {
   text.addEventListener('focus', () => {
     console.log('focus!');
   });
-
+// fillRect(x, y, width, height)左上を基準に
   // blurはフォーカスが外れた時
   text.addEventListener('blur', () => {
     console.log('blur!');
@@ -1043,6 +1042,254 @@ document.querySelector('form').addEventListener('submit', e => {
 
 
 
-// ---------------------------------------
+// canvas------------------------------------------------------------------------------
+
+// canvas.getContext('2d');で二次元の枠
+const ctx = canvas.getContext('2d');
+
+描画(塗りつぶし)
+ctx.fillRect(50, 50, 100, 200);
+// fillStyle = '色'で塗りつぶしの色を指定
+ctx.fillStyle = 'pink';
+
+// strokeRect(x, y, width, height)左上を基準に描画(枠のみ)
+ctx.strokeRect(50, 50, 100, 200);
+// lineWidth = 数字;で線の太さをpxで指定、単位不要
+ctx.lineWidth = 8;
+// lineJoin = 'round';で線の角を丸くする
+ctx.lineJoin = 'round';
+// lineJoin = 'bevel';で線の角を面取りカット
+ctx.lineJoin = 'bevel';
+
+// スタイルするとその後の図形に全て適用
+// 変更したい時は都度設定が必要
 
 
+
+// 線型グラデーション---------------------------------------
+// ctx.createLinearGradient(x0始点, y0始点, x1終点, y1終点);
+// 横いっぱいにグラデーションの時
+const g = ctx.createLinearGradient(0, 0, canvas.width, 0);
+
+// 始点０と終点１の色を指定
+g.addColorStop(0, '#f00');
+g.addColorStop(0.3, '#0f0');
+g.addColorStop(1, '#00f');
+
+// 入れる色を指定
+ctx.fillStyle = g;
+
+// 色を入れる
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+
+
+// 円形グラデーション---------------------------------------
+// const g = ctx.createRadialGradient(
+//   x0, y0, r0, // 始点の座標と半径
+//   x1, y1, r1, // 終点の座標と半径
+// ); で指定する
+const g = ctx.createRadialGradient(
+  canvas.width / 2, canvas.height / 2, 50,
+  canvas.width / 2, canvas.height / 2, 500,
+  );
+
+// 始点０と終点１の色を指定
+g.addColorStop(0, '#f00');
+g.addColorStop(0.3, '#0f0');
+g.addColorStop(1, '#00f');
+
+// 入れる色を指定
+ctx.fillStyle = g;
+
+// 色を入れる
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+
+
+
+// 影をつける---------------------------------------
+// X,Y軸のずらしpx
+ctx.shadowOffsetX = 4;
+ctx.shadowOffsetY = 4;
+// ぼかしの設定
+ctx.shadowBlur = 4;
+// ぼかしの色設定
+ctx.shadowColor = 'rgba(0, 0, 0, 0.3)';
+
+
+
+
+// 線を引く---------------------------------------
+// 基本の書き方
+ctx.beginPath(); // 線を引く合図
+ctx.moveTo(50, 50) // スタート地点(x, y)
+ctx.lineTo(100, 50) // 線を引く地点(x, y)
+ctx.lineTo(100, 100) // 次の線を引く地点(x, y)
+ctx.closePath(); // 始点と終点を線で引く
+ctx.stroke(); // 線を描写する
+ctx.fill(); // 囲った部分を塗りつぶし
+
+
+// 線を変更
+ctx.beginPath();
+ctx.moveTo(100, 100);
+ctx.lineTo(200, 100);
+// 実践に戻す setLineDash([空の配列]);
+ctx.setLineDash([]);
+// 線の太さpx
+ctx.lineWidth = 16;
+// 線の端を丸くする
+ctx.lineCap = 'round';
+ctx.stroke();
+
+
+
+
+// 円を書く---------------------------------------
+ctx.beginPath();
+// .arc(中心のxy座標, 半径, 始点の角度, 終点の角度)
+ctx.arc(100, 100, 50, 0, 2 * Math.PI); // 円
+ctx.stroke();
+
+// 一部の円
+ctx.beginPath();
+// 0度は右、そこから時計回り
+ctx.arc(100, 100, 50, 0, 300 / 360 * 2 * Math.PI); // 360度のうち300度を書く
+ctx.arc(100, 100, 50, 0, 300 / 360 * 2 * Math.PI, true); // trueで反時計回り
+ctx.stroke();
+
+// 扇形に塗る
+// Pathの始点を円の中心にする
+ctx.beginPath();
+ctx.moveTo(100, 100); // 円の中心に移動
+ctx.arc(100, 100, 50, 0, 60 / 360 * 2 * Math.PI);
+ctx.fill();
+
+// 楕円にする
+// .ellipse(中心のxy座標, x半径, y半径, 回転角度, 始点の角度, 終点の角度);
+// beginPth(); は省略できる
+ctx.ellipse(100, 100, 50, 30, 0, 0, 2 * Math.PI);
+ctx.stroke();
+
+
+
+
+// 四角を書く---------------------------------------
+// rect(x, y, width, height)左上を基準
+ctx.rect(100, 100, 200, 50)
+ctx.stroke();
+
+
+
+
+// 文字を書く---------------------------------------
+// 文字のスタイル ※先に指定が必要
+ctx.font = 'bold 64px Verdana';
+//文字の位置を変更
+ctx.textAlign = 'right';
+ctx.textBaseline = 'top';
+
+// fillText('表示テキスト', x, y);
+ctx.fillText('Tokyo', 100, 100);
+// fillText('表示テキスト', x, y, 最大幅);
+ctx.fillText('Tokyo', 100, 100, 100);
+// strokeText();は線だけの文字
+ctx.strokeText('Tokyo', 100, 100, 100);
+
+
+
+
+// 画像を表示する---------------------------------------
+const img = document.createElement('img');
+img.src = 'img/logo.png';
+
+// 読み込んでから描画処理
+// loadイベントで読み込み
+img.addEventListener('load', () => {
+  // drawImage(画像, 描画位置xy);で描画
+  ctx.drawImage(img, 0, 0);
+  // drawImage(画像, 描画位置xy, width, height);で描画
+  ctx.drawImage(img, 0, 0, 40, 40);
+});
+
+// createPattern(画像, 引数);で塗りとして設定
+const pattern = ctx.createPattern(img, 'repeat');
+// 'repeat'は繰り返して敷き詰める
+// 'repeat-x'はx方向のみ繰り返して敷き詰める
+// 'repeat-y'はy方向のみ繰り返して敷き詰める
+// 'no-repeat'は繰り返ししない
+// fillStyle();で設定
+ctx.fillStyle = pattern;
+// fillRect();で敷き詰める
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+
+
+
+// 画像の一部を表示---------------------------------------
+img.addEventListener('load', () => {
+  ctx.drawImage(
+    img, // 画像を渡す
+    // 切り出す画像のx, y, width, height
+    70 *2, 70, 70, 70,
+    // 切り出した画像の表示 x, y, width, height
+    0, 0, 35, 35
+    );
+});
+
+
+
+
+// 画像の変形---------------------------------------
+ // scale()で拡大縮小
+ctx.scale(0.5, 0.5);
+ // translate()で移動
+ctx.translate(400, 0)
+ // rotate()で回転
+ctx.rotate(45 / 180 * Math.PI);
+
+
+
+
+// 画像設定の保存・復元---------------------------------------
+// 今までの設定を保存
+ctx.save();
+// 以前保存した設定を復元
+ctx.restore();
+
+
+
+// アニメーションさせる---------------------------------------
+let t = 0;
+// 描画するたびにクリアしないと動かない
+ctx.clearRect(0, 0, canvas.width, canvas.height);
+ctx.beginPath();
+// Math.sin()の周期で動かす
+ctx.ellipse(80 + Math.sin(t / 30), 100, 8, 8, 0, 0, 2 * Math.PI);
+ctx.ellipse(120 + Math.sin(t / 30), 100, 8, 8, 0, 0, 2 * Math.PI);
+ctx.fillStyle = 'skyblue';
+ctx.fill();
+
+t++;
+// 10ミリ秒ごとに呼び出す
+setTimeout(draw, 10);
+
+
+
+
+// 高解像度のディスプレイに対応する---------------------------------------
+ // 高解像度に対応 => 大きく描画して圧縮する
+const CANVAS_WIDTH = 600;
+const CANVAS_HEIGHT = 240;
+ // 画像の解析度を取得
+ // 取得できなかったら１を返す => || 1
+const dpr = window.devicePixelRatio || 1;
+ // canvasの領域を拡大
+ canvas.width = CANVAS_WIDTH * dpr;
+ canvas.height = CANVAS_HEIGHT * dpr;
+ // 図形を拡大
+ctx.scale(dpr, dpr);
+ // 600*240に縮小
+canvas.style.width = CANVAS_WIDTH + 'px';
+canvas.style.height = CANVAS_HEIGHT + 'px';
