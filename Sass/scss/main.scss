@@ -1,0 +1,21 @@
+// コメント css非表示
+/* コメント css表示 */
+
+// $baseFontSize: 14px;
+// $brandColor: red;
+
+$debugMode: true;
+$x: 10;
+
+#main {
+  @if $debugMode == true {
+    color: red;
+  } @else {
+    color: green;
+  }
+  p {
+    @if $x == 10 {
+      
+    }
+  }
+}
